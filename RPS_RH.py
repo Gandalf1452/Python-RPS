@@ -1,20 +1,14 @@
 ########How I did scoring is that I based it off of whether or not you won, then went off of the ratio of Player Wins to CPU Wins, making it a 1 to 10 scale#################
 ########For tie scores, the new score is added next to the old score##############
 import random
+from gpiozero import Button
 import time
 ranNum = 0
 end = False
-global playerWins
-global cpuWins
-global cpuChoicee
-global playAgain1
-global playAgain2
-global score
-global score_file
-global scores
-global topTen
-global fileName
-global highScores
+global playerWins,cpuWins,cpuChoicee,playagain1,playagain2,score,score_file,scores,topTen,fileName,highScores
+rock = Button(12)
+paper = Button(17)
+scissors = Button(26)
 userName = input("What is your name? ")
 fileName = input("Name the file where scores will be held: ")
 
@@ -94,6 +88,22 @@ def get_score():
     score_file.close()
 
 #######This is the while loop where the Rock Paper Scissors game runs####################        
+def rps_input():
+    global playerChoice
+    print("Choose Rock, Paper, or Scissors: ")
+    playerInput = 0
+    while playerInput == 0:
+        if rock.is_pressed:
+            playerChoice = 1
+            playerInput = 1
+        elif paper.is_pressed:
+            playerChoice = 2
+            playerInput = 1
+        elif scissors.is_pressed:
+            playerChoice = 3
+            playerInput = 1
+        else:
+            time.sleep(.05)
 while end == False:
     global score
     global playerChoice
@@ -102,11 +112,10 @@ while end == False:
     cpuChoice = ranNum
     if playerWins < 5 and cpuWins < 5:
         #time.sleep(1)
-        print("The CPU has chosen...")
+        #print("The CPU has chosen...")
         #time.sleep(1)
-        playerChoice = input("Choose Rock, Paper, or Scissors: ")
-        if playerChoice == "Rock" or playerChoice == "rock" or playerChoice == "R" or playerChoice == "r" :
-            playerChoice = 1
+        #playerChoice = input("Choose Rock, Paper, or Scissors: ")
+        if playerChoice == 1: 
             if cpuChoice == 1:
                 print("It is a tie!" + " The CPU picked " + cpuChoicee + "\nPlayer Wins: " + str(playerWins) + " || " + "CPU Wins: " + str(cpuWins))
             elif cpuChoice == 2:
@@ -115,8 +124,7 @@ while end == False:
             elif cpuChoice == 3:
                 playerWins += 1
                 print(userName + " wins the round!" + " The CPU picked " + cpuChoicee + "\nPlayer Wins: " + str(playerWins) + " || " + "CPU Wins: " + str(cpuWins))
-        elif playerChoice == "Paper" or playerChoice == "paper" or playerChoice == "P" or playerChoice == "p":
-            playerChoice = 2
+        elif playerChoice == 2:
             if cpuChoice == 1:
                 playerWins += 1
                 print(userName + " wins the round!" + " The CPU picked " + cpuChoicee + "\nPlayer Wins: " + str(playerWins) + " || " + "CPU Wins: " + str(cpuWins))
@@ -125,8 +133,7 @@ while end == False:
             elif cpuChoice == 3:
                 cpuWins += 1
                 print("CPU wins the round!" + " The CPU picked " + cpuChoicee + "\nPlayer Wins: " + str(playerWins) + " || " + "CPU Wins: " + str(cpuWins))
-        elif playerChoice == "Scissors" or playerChoice == "scissors" or playerChoice == "S" or playerChoice == "s":
-            playerChoice = 3
+        elif playerChoice == 3:
             if cpuChoice == 1:
                 cpuWins += 1
                 print("CPU wins the round!" + " The CPU picked " + cpuChoicee + "\nPlayer Wins: " + str(playerWins) + " || " + "CPU Wins: " + str(cpuWins))
@@ -165,3 +172,5 @@ while end == False:
             break
         else:
             print("Invalid input, try again")
+
+
