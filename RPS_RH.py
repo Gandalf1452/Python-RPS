@@ -115,6 +115,7 @@ while end == False:
         #print("The CPU has chosen...")
         #time.sleep(1)
         #playerChoice = input("Choose Rock, Paper, or Scissors: ")
+        rps_input()
         if playerChoice == 1: 
             if cpuChoice == 1:
                 print("It is a tie!" + " The CPU picked " + cpuChoicee + "\nPlayer Wins: " + str(playerWins) + " || " + "CPU Wins: " + str(cpuWins))
