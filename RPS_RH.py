@@ -87,27 +87,29 @@ def get_score():
     score_file.write("\n" + topTen)
     score_file.close()
 
-#######This is the while loop where the Rock Paper Scissors game runs####################        
+#####This function gets button input from the player######        
 def rps_input():
-    global playerChoice
+    global playerChoices
     print("Choose Rock, Paper, or Scissors: ")
     playerInput = 0
     while playerInput == 0:
         if rock.is_pressed:
-            playerChoice = 1
+            playerChoices = 1
             playerInput = 1
         elif paper.is_pressed:
-            playerChoice = 2
+            playerChoices = 2
             playerInput = 1
         elif scissors.is_pressed:
-            playerChoice = 3
+            playerChoices = 3
             playerInput = 1
         else:
             time.sleep(.05)
+#######This is the while loop where the Rock Paper Scissors game runs####################            
 while end == False:
     global score
     global playerChoice
     global cpuChoice
+    global playerChoices
     gen_num()
     cpuChoice = ranNum
     if playerWins < 5 and cpuWins < 5:
@@ -116,7 +118,8 @@ while end == False:
         #time.sleep(1)
         #playerChoice = input("Choose Rock, Paper, or Scissors: ")
         rps_input()
-        if playerChoice == 1: 
+        if playerChoices == 1:
+            playerChoice = 1
             if cpuChoice == 1:
                 print("It is a tie!" + " The CPU picked " + cpuChoicee + "\nPlayer Wins: " + str(playerWins) + " || " + "CPU Wins: " + str(cpuWins))
             elif cpuChoice == 2:
@@ -125,7 +128,8 @@ while end == False:
             elif cpuChoice == 3:
                 playerWins += 1
                 print(userName + " wins the round!" + " The CPU picked " + cpuChoicee + "\nPlayer Wins: " + str(playerWins) + " || " + "CPU Wins: " + str(cpuWins))
-        elif playerChoice == 2:
+        elif playerChoices == 2:
+            playerChoice = 2
             if cpuChoice == 1:
                 playerWins += 1
                 print(userName + " wins the round!" + " The CPU picked " + cpuChoicee + "\nPlayer Wins: " + str(playerWins) + " || " + "CPU Wins: " + str(cpuWins))
@@ -134,7 +138,8 @@ while end == False:
             elif cpuChoice == 3:
                 cpuWins += 1
                 print("CPU wins the round!" + " The CPU picked " + cpuChoicee + "\nPlayer Wins: " + str(playerWins) + " || " + "CPU Wins: " + str(cpuWins))
-        elif playerChoice == 3:
+        elif playerChoices == 3:
+            playerChoice = 3
             if cpuChoice == 1:
                 cpuWins += 1
                 print("CPU wins the round!" + " The CPU picked " + cpuChoicee + "\nPlayer Wins: " + str(playerWins) + " || " + "CPU Wins: " + str(cpuWins))
