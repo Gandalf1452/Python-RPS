@@ -1,5 +1,7 @@
 ########How I did scoring is that I based it off of whether or not you won, then went off of the ratio of Player Wins to CPU Wins, making it a 1 to 10 scale#################
 ########For tie scores, the new score is added next to the old score##############
+###########Last Update: 3-8-18###############
+############New Features: Added Button Input#########
 import random
 from gpiozero import Button
 import time
@@ -151,7 +153,7 @@ while end == False:
             elif cpuChoice == 3:
                 print("It is a tie!" + " The CPU picked " + cpuChoicee + "\nPlayer Wins: " + str(playerWins) + " || " + "CPU Wins: " + str(cpuWins))
         else:
-            print("You didn't choose Rock, Paper or Scissors!")
+            time.sleep(.05)
     elif playerWins == 5:
         score_gen()
         print(userName + " wins!!!")
