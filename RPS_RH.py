@@ -99,12 +99,12 @@ def rps_input():
         elif paper.is_pressed:
             playerChoices = 2
             playerInput = 1
-        elif scissors.is_pressed:
+       elif scissors.is_pressed:
             playerChoices = 3
             playerInput = 1
         else:
-            time.sleep(.05)
-rps_input()
+           time.sleep(.05)
+#rps_input()
 #######This is the while loop where the Rock Paper Scissors game runs####################            
 while end == False:
     global score
@@ -118,20 +118,17 @@ while end == False:
         #print("The CPU has chosen...")
         #time.sleep(1)
         #playerChoice = input("Choose Rock, Paper, or Scissors: ")
-        if playerChoices == 1:
-            playerChoice = 1
+        time.sleep(.5)
+        if rock.is_pressed:
             if cpuChoice == 1:
                 print("It is a tie!" + " The CPU picked " + cpuChoicee + "\nPlayer Wins: " + str(playerWins) + " || " + "CPU Wins: " + str(cpuWins))
-                rps_input()
             elif cpuChoice == 2:
                 cpuWins += 1
                 print("CPU wins the round!" + " The CPU picked " + cpuChoicee + "\nPlayer Wins: " + str(playerWins) + " || " + "CPU Wins: " + str(cpuWins))
-                rps_input()
             elif cpuChoice == 3:
                 playerWins += 1
                 print(userName + " wins the round!" + " The CPU picked " + cpuChoicee + "\nPlayer Wins: " + str(playerWins) + " || " + "CPU Wins: " + str(cpuWins))
-                rps_input()
-        elif playerChoices == 2:
+        elif paper.is_pressed:
             playerChoice = 2
             if cpuChoice == 1:
                 playerWins += 1
@@ -143,20 +140,16 @@ while end == False:
             elif cpuChoice == 3:
                 cpuWins += 1
                 print("CPU wins the round!" + " The CPU picked " + cpuChoicee + "\nPlayer Wins: " + str(playerWins) + " || " + "CPU Wins: " + str(cpuWins))
-                rps_input()
-        elif playerChoices == 3:
+        elif scissors.is_pressed:
             playerChoice = 3
             if cpuChoice == 1:
                 cpuWins += 1
                 print("CPU wins the round!" + " The CPU picked " + cpuChoicee + "\nPlayer Wins: " + str(playerWins) + " || " + "CPU Wins: " + str(cpuWins))
-                rps_input()
             elif cpuChoice == 2:
                 playerWins+= 1
                 print(userName + " wins the round!" + " The CPU picked " + cpuChoicee + "\nPlayer Wins: " + str(playerWins) + " || " + "CPU Wins: " + str(cpuWins))
-                rps_input()
             elif cpuChoice == 3:
                 print("It is a tie!" + " The CPU picked " + cpuChoicee + "\nPlayer Wins: " + str(playerWins) + " || " + "CPU Wins: " + str(cpuWins))
-                rps_input()
         else:
             print("You didn't choose Rock, Paper or Scissors!")
     elif playerWins == 5:
