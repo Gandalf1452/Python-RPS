@@ -88,25 +88,7 @@ def get_score():
     score_file = open(fileName + ".txt","a+")
     score_file.write("\n" + topTen)
     score_file.close()
-
-#####This function gets button input from the player######        
-def rps_input():
-    global playerChoices
-    print("Choose Rock, Paper, or Scissors: ")
-    playerInput = 0
-    while playerInput == 0:
-        if rock.is_pressed:
-            playerChoices = 1
-            playerInput = 1
-        elif paper.is_pressed:
-            playerChoices = 2
-            playerInput = 1
-       elif scissors.is_pressed:
-            playerChoices = 3
-            playerInput = 1
-        else:
-           time.sleep(.05)
-#rps_input()
+    
 #######This is the while loop where the Rock Paper Scissors game runs####################            
 while end == False:
     global score
@@ -135,10 +117,8 @@ while end == False:
             if cpuChoice == 1:
                 playerWins += 1
                 print(userName + " wins the round!" + " The CPU picked " + cpuChoicee + "\nPlayer Wins: " + str(playerWins) + " || " + "CPU Wins: " + str(cpuWins))
-                rps_input()
             elif cpuChoice == 2:
                 print("It is a tie!" + " The CPU picked " + cpuChoicee + "\nPlayer Wins: " + str(playerWins) + " || " + "CPU Wins: " + str(cpuWins))
-                rps_input
             elif cpuChoice == 3:
                 cpuWins += 1
                 print("CPU wins the round!" + " The CPU picked " + cpuChoicee + "\nPlayer Wins: " + str(playerWins) + " || " + "CPU Wins: " + str(cpuWins))
@@ -164,7 +144,6 @@ while end == False:
         if playAgain1 == "y" or playAgain1 == "Y":
             playerWins = 0
             cpuWins = 0
-            rps_input()
         elif playAgain1 == "n" or playAgain1 == "N":
             break
         else:
@@ -179,7 +158,6 @@ while end == False:
         if playAgain2 == "y" or playAgain2 == "Y":
             playerWins = 0
             cpuWins = 0
-            rps_input()
         elif playAgain2 == "n" or playAgain2 == "N":
             break
         else:
